@@ -2,11 +2,13 @@ import {
   ADD_DISH_IN_CART,
   FETCH_DISHES_ERROR, 
   FETCH_DISHES_REQUEST, 
-  FETCH_DISHES_SUCCESS } from "./actionsTypes"
+  FETCH_DISHES_SUCCESS, 
+  SET_MODAL_VISIBLE} from "./actionsTypes"
 
 const initialState = {
   dishesInCart: [],
   dishes: {},
+  modalVisible: false,
   error: null,
 }
 

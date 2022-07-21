@@ -1,19 +1,20 @@
-import { StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import DishesWrapper from "../components/DishesWrapper/DishesWrapper";
 import {useDispatch, useSelector} from 'react-redux'
-import { addDishInCart, fetchDishes } from '../store/dishesActions'
-import { useEffect } from "react";
+import { addDishInCart, fetchDishes} from '../store/dishesActions'
+import { useEffect, useState } from "react";
+import Footer from "../components/Footer/Footer";
+import ModalCustom from "../components/ModalCustom/ModalCustom";
 
 export default function Dishes() {
   
   const dispatch = useDispatch()
   const {dishes, dishesInCart} = useSelector(state => state.dishes)
-
+  const [modalVisible, setModalVisible] = useState(false)
   useEffect(()=>{
     dispatch(fetchDishes())
   }, [dispatch])
 
-  console.log(dishesInCart)
 
   const addDishInCartHandler = (dishName, dishCost) => {
     dispatch(addDishInCart(dishName, dishCost))
@@ -27,6 +28,13 @@ export default function Dishes() {
           addDishInCartHandler={addDishInCartHandler}
         />
       </View> 
+      <Footer setModalVisible={setModalVisible}/>
+      <ModalCustom
+        setModalVisible={setModalVisible}
+        modalVisible={modalVisible}
+      >
+        
+      </ModalCustom>
     </>
   );
 }

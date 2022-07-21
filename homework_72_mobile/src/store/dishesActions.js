@@ -3,7 +3,7 @@ import {
   ADD_DISH_IN_CART,
   FETCH_DISHES_ERROR, 
   FETCH_DISHES_REQUEST, 
-  FETCH_DISHES_SUCCESS } from "./actionsTypes"
+  FETCH_DISHES_SUCCESS, } from "./actionsTypes"
 
 import {baseURL} from '../constans'
 
