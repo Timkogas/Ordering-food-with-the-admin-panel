@@ -1,10 +1,10 @@
 import { Image, Text, View, StyleSheet, TouchableOpacity } from "react-native";
 
 
-export default function Dish({img, name, cost}) {
+export default function Dish({img, name, cost, addDishInCartHandler}) {
   return (
     <>
-    <TouchableOpacity style={styles.dish}>
+    <TouchableOpacity style={styles.dish} onPress={addDishInCartHandler}>
       <View style={styles.imgWrapper}>
         <Image source={{uri: img}} style={styles.img} alt='dish'/>
       </View>
