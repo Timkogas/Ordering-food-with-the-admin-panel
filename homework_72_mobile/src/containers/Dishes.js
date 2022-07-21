@@ -17,7 +17,9 @@ export default function Dishes() {
   return (
     <>
       <View style={styles.container}>
-        <Text>asdasd</Text>
+        <DishesWrapper
+          dishes={dishes}
+        />
       </View> 
     </>
   );

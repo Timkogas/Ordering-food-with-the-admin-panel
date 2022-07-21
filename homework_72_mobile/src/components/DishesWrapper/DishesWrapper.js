@@ -1,7 +1,7 @@
-import {FlatList, Text} from "react-native";
+import {FlatList, ScrollView, Text} from "react-native";
 import Dish from "./Dish/Dish";
 
-export default function Dishes({dish}) {
+export default function Dishes({dishes}) {
   return (
     <>
       {/* <FlatList 
@@ -15,7 +15,19 @@ export default function Dishes({dish}) {
         />
       }
       /> */}
-      <Text>Ddasd</Text>
+      <ScrollView>
+      {Object.values(dishes).map((dish, i)=>{
+          const dishID = Object.keys(dishes)[i]
+          return (
+            <Dish
+              key={dishID}
+              name={dish.name}
+              cost={dish.cost}
+              img={dish.img}
+            />
+          )
+        })}
+      </ScrollView>
     </>
   );
 }
