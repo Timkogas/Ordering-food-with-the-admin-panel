@@ -1,0 +1,1 @@
+export const baseURL = "https://js-8-timur-ermolaev-default-rtdb.firebaseio.com/HM72"

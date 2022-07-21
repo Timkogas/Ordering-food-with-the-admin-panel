@@ -1,20 +1,17 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import Dishes from './src/containers/Dishes';
+import dishesReducer from './src/store/dishesReducer';
+
+
+const store = configureStore({reducer: {
+  dishes: dishesReducer,
+  }})
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}> 
+      <Dishes/>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
