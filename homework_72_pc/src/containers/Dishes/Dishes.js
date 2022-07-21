@@ -1,10 +1,11 @@
 import DishesWrapper from '../../components/DishesWrapper/DishesWrapper'
 import './Dishes.css'
 import { useDispatch, useSelector } from 'react-redux';
-import { addDish } from '../../store/actions/dishesActions';
-import { useState } from 'react';
+import { addDish, fetchDishes } from '../../store/actions/dishesActions';
+import { useEffect, useState } from 'react';
 import Modal from '../../components/UI/Modal/Modal';
 import FormAddDish from '../../components/FormAddDish/FormAddDish'
+import Preloader from '../../components/UI/Preloader/Preloader';
 
 const Dishes = () => {
 
@@ -17,6 +18,11 @@ const Dishes = () => {
     cost: "",
     img: "",
   });
+
+  useEffect(() => {
+    dispatch(fetchDishes("/dishes.json"));
+  }, [dispatch]);
+
 
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -42,8 +48,12 @@ const Dishes = () => {
 
   return (
   <>
+    <Preloader
+        showPlaceholder={loading}
+      />
     <DishesWrapper
       setActiveModal={setActiveModal}
+      dishes={dishes}
     />
     <Modal active={activeModal} setActive={setActiveModal}>
       <FormAddDish
