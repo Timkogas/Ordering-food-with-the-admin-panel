@@ -1,6 +1,9 @@
+import DishesWrapper from '../../components/DishesWrapper/DishesWrapper'
+import './Dishes.css'
+
 const Dishes = () => (
   <>
-    <p>Dishes Page</p>
+    <DishesWrapper/>
   </>
 );
 

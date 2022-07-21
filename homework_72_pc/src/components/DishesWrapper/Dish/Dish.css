@@ -1,0 +1,45 @@
+.dish {
+  display: flex;
+  border: 2px solid #41B3A3;
+  padding: 30px 20px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dish_img {
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  border: 5px solid #367a71
+}
+
+.dish_img_and_name, .dish_cost_and_btns {
+  display: flex;
+  align-items: center;
+  gap: 20px
+}
+
+.dish_name {
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.dish_cost {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.dish_btn {
+  padding: 10px 70px;
+  border: 1px solid #4ccebd;;
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+}
+
+.dish_btn:hover {
+  background-color: #94ebdf;
+}
