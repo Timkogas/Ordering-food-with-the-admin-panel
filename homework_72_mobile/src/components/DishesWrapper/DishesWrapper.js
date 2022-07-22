@@ -1,23 +1,26 @@
-import {ScrollView} from "react-native";
+import {FlatList, RefreshControl} from "react-native";
 import Dish from "./Dish/Dish";
 
-export default function Dishes({dishes, addDishInCartHandler}) {
+export default function Dishes({dishes, addDishInCartHandler, onRefresh, refreshing}) {
   return (
-    <>
-      <ScrollView>
-      {Object.values(dishes).map((dish, i)=>{
-          const dishID = Object.keys(dishes)[i]
-          return (
-            <Dish
-              key={dishID}
-              name={dish.name}
-              cost={dish.cost}
-              img={dish.img}
-              addDishInCartHandler={()=>{addDishInCartHandler(dish.name, dish.cost)}}
-            />
-          )
-        })}
-      </ScrollView>
+    <> 
+    
+    <FlatList 
+        data={Object.values(dishes)}
+        style={{width: "100%"}}
+        keyExtractor={(dish, i)=>{Object.keys(dishes)[i]}}
+        refreshControl={
+          <RefreshControl key={'1'} refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        renderItem={({item}) => 
+          <Dish
+            name={item.name}
+            cost={item.cost}
+            img={item.img}
+            addDishInCartHandler={()=>{addDishInCartHandler(item.name, item.cost)}}
+          />
+        }
+    />
     </>
   );
 }

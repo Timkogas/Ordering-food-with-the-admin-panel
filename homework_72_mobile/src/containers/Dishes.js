@@ -2,7 +2,7 @@ import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import DishesWrapper from "../components/DishesWrapper/DishesWrapper";
 import {useDispatch, useSelector} from 'react-redux'
 import { addDishInCart, calculateTotalPrice, createOrder, deleteDishFromCart, fetchDishes} from '../store/dishesActions'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Footer from "../components/Footer/Footer";
 import ModalCustom from "../components/ModalCustom/ModalCustom";
 import Cart from "../components/Cart/Cart";
@@ -15,6 +15,13 @@ export default function Dishes() {
   const [fieldName, setFieldName] = useState('');
   const [fieldPhone, setFieldPhone] = useState('');
   const [fieldEmail, setFieldEmail] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    dispatch(fetchDishes())
+    setRefreshing(false);
+  }, []);
 
   useEffect(()=>{
     dispatch(fetchDishes())
@@ -69,6 +76,8 @@ export default function Dishes() {
         <DishesWrapper
           dishes={dishes}
           addDishInCartHandler={addDishInCartHandler}
+          refreshing={refreshing}
+          onRefresh={onRefresh}
         />
       </View> 
       <Footer 
