@@ -1,6 +1,6 @@
 import { Modal, Pressable, Text, View, StyleSheet } from "react-native";
 
-export default function ModalCustom({setModalVisible, modalVisible, children}) {
+export default function ModalCustom({setModalVisible, modalVisible, children, fieldName, fieldPhone, fieldEmail}) {
   return (
     <>
       <Modal
@@ -30,6 +30,7 @@ export default function ModalCustom({setModalVisible, modalVisible, children}) {
               <Pressable
                 style={styles.modal_btn}
                 onPress={() => {}}
+                disabled={!(fieldName && fieldPhone && fieldEmail)}
               >
                 <Text>Order</Text>
               </Pressable>

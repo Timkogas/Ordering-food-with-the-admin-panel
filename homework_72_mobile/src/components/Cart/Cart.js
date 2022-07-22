@@ -1,8 +1,11 @@
 import { useEffect } from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
+import Form from "../Form/Form";
 import CartItem from "./CartItem/CartItem";
 
-export default function Cart({dishesInCart, devilery, totalPrice, calculateTotalPrice, deleteDishFromCart}) {
+export default function Cart(
+  {dishesInCart, devilery, totalPrice, calculateTotalPrice, deleteDishFromCart, fieldName, fieldPhone, fieldEmail, setFieldName, setFieldPhone, setFieldEmail}
+  ) {
   useEffect (()=>{
     calculateTotalPrice(dishesInCart, devilery)
     // eslint-disable-next-line
@@ -35,6 +38,15 @@ export default function Cart({dishesInCart, devilery, totalPrice, calculateTotal
           </View>
         </View>
       </View>
+
+      <Form
+        fieldName={fieldName}
+        setFieldName={setFieldName}
+        fieldPhone={fieldPhone}
+        setFieldPhone={setFieldPhone}
+        fieldEmail={fieldEmail}
+        setFieldEmail={setFieldEmail}
+      />
     </>
   );
 }

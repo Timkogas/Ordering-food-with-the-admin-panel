@@ -12,6 +12,9 @@ export default function Dishes() {
   const dispatch = useDispatch()
   const {dishes, dishesInCart, devilery, totalPrice} = useSelector(state => state.dishes)
   const [modalVisible, setModalVisible] = useState(false)
+  const [fieldName, setFieldName] = useState('');
+  const [fieldPhone, setFieldPhone] = useState('');
+  const [fieldEmail, setFieldEmail] = useState('');
 
   useEffect(()=>{
     dispatch(fetchDishes())
@@ -21,6 +24,16 @@ export default function Dishes() {
     calculateTotalPrice(dishesInCart, devilery)
     // eslint-disable-next-line
   }, [dishesInCart, devilery])
+
+  const onChangeHandler = (e) => {
+    const { name, value } = e.target;
+    setFields(prevState => {
+      return {
+        ...prevState,
+        [name]: value
+      };
+    });
+  };
 
 
   const addDishInCartHandler = (dishName, dishCost) => {
@@ -51,6 +64,9 @@ export default function Dishes() {
       <ModalCustom
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
+        fieldName={fieldName}
+        fieldPhone={fieldPhone}
+        fieldEmail={fieldEmail}
       >
         <Cart
           dishesInCart={dishesInCart}
@@ -58,6 +74,15 @@ export default function Dishes() {
           totalPrice={totalPrice}
           calculateTotalPrice={calculateTotalPriceHandler}
           deleteDishFromCart={deleteDishFromCartHandler}
+          onChangeHandler={onChangeHandler}
+          
+          
+          fieldName={fieldName}
+          setFieldName={setFieldName}
+          fieldPhone={fieldPhone}
+          setFieldPhone={setFieldPhone}
+          fieldEmail={fieldEmail}
+          setFieldEmail={setFieldEmail}
         />
       </ModalCustom>
     </>
