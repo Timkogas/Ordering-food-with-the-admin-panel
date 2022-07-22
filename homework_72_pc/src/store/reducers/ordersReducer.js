@@ -1,4 +1,4 @@
-import { FETCH_ORDERS_ERROR, FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS } from "../actionTypes";
+import { COMPLETE_ORDER_SUCCESS, FETCH_ORDERS_ERROR, FETCH_ORDERS_REQUEST, FETCH_ORDERS_SUCCESS } from "../actionTypes";
 
 const initialState = {
   orders: {},
@@ -15,6 +15,9 @@ const ordersReducer = (state = initialState, action) => {
       return {...state, orders: action.orders, loading: false};
     case FETCH_ORDERS_ERROR:
       return {...state, loading: false, error: action.error};
+    case COMPLETE_ORDER_SUCCESS: {
+      return {...state, loading: false};
+    }
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import './OrdersWrapper.css'
 import Order from './Order/Order'
 
-const OrdersWrapper = ({orders, dishes, devilery}) => (
+const OrdersWrapper = ({orders, dishes, devilery, calculateTotalPriceHandler, completeOrderHandler}) => (
   <div className='container'>
     <div className='orders_wrapper_header'>
         <h2 className='orders_wrapper_header_title'>Orders</h2>
@@ -14,6 +14,9 @@ const OrdersWrapper = ({orders, dishes, devilery}) => (
         dishesUser={order.dishes}
         dishesData={dishes}
         devilery={devilery}
+        calculateTotalPriceHandler={calculateTotalPriceHandler}
+        completeOrderHandler={completeOrderHandler}
+        orderID={orderID}
       />
     )
   })}
