@@ -1,0 +1,41 @@
+.order {
+  display: flex;
+  border: 2px solid #41B3A3;
+  padding: 30px 20px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.order_list {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.order_list_devilery{
+  font-size: 22px;
+  display: flex;
+  justify-content: space-between;
+}
+.order_total {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  width: 25%;
+}
+.order_total_btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border: 1px solid #4ccebd;;
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+}
+.order_total_btn:hover {
+  background-color: #94ebdf;
+}
+

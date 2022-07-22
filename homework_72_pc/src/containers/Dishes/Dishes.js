@@ -28,7 +28,7 @@ const Dishes = () => {
   const [currentDishID, setCurrentDishID] = useState('')
 
   useEffect(() => {
-    dispatch(fetchDishes("/dishes.json"));
+    dispatch(fetchDishes());
   }, [dispatch]);
 
   const onChangeAddHandler = (e) => {
