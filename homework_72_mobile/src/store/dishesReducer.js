@@ -1,6 +1,9 @@
 import { 
   ADD_DISH_IN_CART,
   CALCULATE_TOTAL_PRICE,
+  CREATE_ORDER_ERROR,
+  CREATE_ORDER_REQUEST,
+  CREATE_ORDER_SUCCESS,
   DELETE_DISH_FROM_CART,
   FETCH_DISHES_ERROR, 
   FETCH_DISHES_REQUEST, 
@@ -58,6 +61,12 @@ const dishesReducer = (state = initialState, action) => {
         newArr[indexDish] = newObj
         return {...state, dishesInCart: newArr}
       }
+    case CREATE_ORDER_REQUEST:
+        return {...state};
+    case CREATE_ORDER_SUCCESS:
+        return {...state};
+    case CREATE_ORDER_ERROR:
+        return {...state, error: action.error};
     default:
       return state
   }

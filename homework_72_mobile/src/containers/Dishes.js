@@ -1,7 +1,7 @@
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import DishesWrapper from "../components/DishesWrapper/DishesWrapper";
 import {useDispatch, useSelector} from 'react-redux'
-import { addDishInCart, calculateTotalPrice, deleteDishFromCart, fetchDishes} from '../store/dishesActions'
+import { addDishInCart, calculateTotalPrice, createOrder, deleteDishFromCart, fetchDishes} from '../store/dishesActions'
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 import ModalCustom from "../components/ModalCustom/ModalCustom";
@@ -45,6 +45,23 @@ export default function Dishes() {
   const deleteDishFromCartHandler = (dish) => {
     dispatch(deleteDishFromCart(dish))
   }
+  const orderHandler = async () => {
+    const newDishesWithoutCost = [...dishesInCart].map((dish) => {return {name: dish.name, amount: dish.amount}})
+    const order = {
+      customer: {
+        name: fieldName,
+        phone: fieldPhone,
+        email: fieldEmail,
+      },
+      dishes: newDishesWithoutCost,
+    };
+    await dispatch(createOrder(order))
+    
+    setFieldName('')
+    setFieldPhone('')
+    setFieldEmail('')
+    setModalVisible(false)
+  }
 
   return (
     <>
@@ -67,6 +84,8 @@ export default function Dishes() {
         fieldName={fieldName}
         fieldPhone={fieldPhone}
         fieldEmail={fieldEmail}
+        dishesInCart={dishesInCart}
+        orderHandler={orderHandler}
       >
         <Cart
           dishesInCart={dishesInCart}

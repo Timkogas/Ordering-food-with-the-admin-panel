@@ -1,5 +1,4 @@
 import './Dish.css'
-import pizzaSlice from '../../../animations/pizza_slice.gif'
 
 const Dish = ({name, cost, img, deleteDishHandler, setActiveModalEditDish}) => (
   <div className='dish'>
