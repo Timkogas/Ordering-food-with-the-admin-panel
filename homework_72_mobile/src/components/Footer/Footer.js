@@ -14,18 +14,6 @@ export default function Footer({setModalVisible}) {
 }
 
 const styles = StyleSheet.create({
-  header: {
-    marginTop: 30,
-    borderBottomWidth: 2,
-    borderBottomColor: 'black',
-    width: '100%',
-    height: 70,
-    padding: 10,
-  },
-  headerText: {
-    fontWeight: 'bold',
-    fontSize: 28,
-  },
   footer: {
     flexDirection: 'row',
     borderTopWidth: 2,

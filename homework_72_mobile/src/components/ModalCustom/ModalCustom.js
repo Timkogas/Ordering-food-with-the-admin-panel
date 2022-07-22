@@ -18,19 +18,22 @@ export default function ModalCustom({setModalVisible, modalVisible, children}) {
         }}>
           <View>
             {children}
-            <Pressable
-              style={styles.modal_btn}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text>Cancel</Text>
-            </Pressable>
 
-            <Pressable
-              style={styles.modal_btn}
-              onPress={() => setModalVisible(!modalVisible)}
-            >
-              <Text>Order</Text>
-            </Pressable>
+            <View style={styles.modal_btns_wrapper}>
+              <Pressable
+                style={styles.modal_btn}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text>Cancel</Text>
+              </Pressable>
+
+              <Pressable
+                style={styles.modal_btn}
+                onPress={() => setModalVisible(!modalVisible)}
+              >
+                <Text>Order</Text>
+              </Pressable>
+            </View>
           </View>
         </View>
       </Modal>
@@ -39,6 +42,9 @@ export default function ModalCustom({setModalVisible, modalVisible, children}) {
 }
 
 const styles = StyleSheet.create({
+  modal_btns_wrapper: {
+    marginTop: 30,
+  },
   modal_btn: {
     width: '100%',
     borderWidth: 1,

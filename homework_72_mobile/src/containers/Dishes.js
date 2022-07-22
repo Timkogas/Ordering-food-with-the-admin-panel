@@ -5,6 +5,7 @@ import { addDishInCart, fetchDishes} from '../store/dishesActions'
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 import ModalCustom from "../components/ModalCustom/ModalCustom";
+import Cart from "../components/Cart/Cart";
 
 export default function Dishes() {
   
@@ -33,7 +34,9 @@ export default function Dishes() {
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
       >
-        
+        <Cart
+          dishesInCart={dishesInCart}
+        />
       </ModalCustom>
     </>
   );
