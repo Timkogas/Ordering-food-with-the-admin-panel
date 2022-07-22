@@ -1,11 +1,15 @@
 import { 
   ADD_DISH_IN_CART,
+  CALCULATE_TOTAL_PRICE,
+  DELETE_DISH_FROM_CART,
   FETCH_DISHES_ERROR, 
   FETCH_DISHES_REQUEST, 
   FETCH_DISHES_SUCCESS, 
   SET_MODAL_VISIBLE} from "./actionsTypes"
 
 const initialState = {
+  totalPrice: 0,
+  devilery: 150,
   dishesInCart: [],
   dishes: {},
   modalVisible: false,
@@ -35,6 +39,24 @@ const dishesReducer = (state = initialState, action) => {
           amount: 1
         }
         return {...state, dishesInCart: [...state.dishesInCart, newObj]}
+      }
+      case CALCULATE_TOTAL_PRICE: 
+      const sum = action.dishes.reduce((sum, dish)=>{
+        return sum + (dish.cost * dish.amount)
+      }, state.devilery)
+      return {...state, totalPrice: sum}
+
+    case DELETE_DISH_FROM_CART:
+      const indexDish = state.dishesInCart.findIndex(dish => dish.name === action.dish.name)
+      if (action.dish.amount === 1) {
+        const newArr = [...state.dishesInCart]
+        newArr.splice(indexDish, 1)
+        return {...state, dishesInCart: newArr}
+      } else {
+        const newObj = {...action.dish, amount: action.dish.amount - 1}
+        const newArr = [...state.dishesInCart]
+        newArr[indexDish] = newObj
+        return {...state, dishesInCart: newArr}
       }
     default:
       return state

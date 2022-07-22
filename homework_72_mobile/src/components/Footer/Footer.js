@@ -1,10 +1,15 @@
+import { useEffect } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-export default function Footer({setModalVisible}) {
+export default function Footer({setModalVisible, totalPrice, dishesInCart, devilery, calculateTotalPrice}) {
+  useEffect (()=>{
+    calculateTotalPrice(dishesInCart, devilery)
+    // eslint-disable-next-line
+  }, [dishesInCart, devilery])
   return (
     <>
       <View style={styles.footer}>
-        <Text style={styles.footerPrice}>Order Total: 450 KGS</Text>
+        <Text style={styles.footerPrice}>Order Total: {totalPrice} KGS</Text>
         <Pressable style={styles.footerBtn} onPress={()=>{(setModalVisible(true))}}>
           <Text style={styles.footerBtnText}>Checkout</Text>
         </Pressable>

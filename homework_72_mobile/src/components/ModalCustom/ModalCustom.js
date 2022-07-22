@@ -14,7 +14,7 @@ export default function ModalCustom({setModalVisible, modalVisible, children}) {
         <View style={{
           height: "100%",
           flex: 1,
-          backgroundColor: "#fff"
+          backgroundColor: "#fff",
         }}>
           <View>
             {children}
@@ -29,7 +29,7 @@ export default function ModalCustom({setModalVisible, modalVisible, children}) {
 
               <Pressable
                 style={styles.modal_btn}
-                onPress={() => setModalVisible(!modalVisible)}
+                onPress={() => {}}
               >
                 <Text>Order</Text>
               </Pressable>

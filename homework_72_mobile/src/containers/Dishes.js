@@ -1,7 +1,7 @@
 import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 import DishesWrapper from "../components/DishesWrapper/DishesWrapper";
 import {useDispatch, useSelector} from 'react-redux'
-import { addDishInCart, fetchDishes} from '../store/dishesActions'
+import { addDishInCart, calculateTotalPrice, deleteDishFromCart, fetchDishes} from '../store/dishesActions'
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer/Footer";
 import ModalCustom from "../components/ModalCustom/ModalCustom";
@@ -10,15 +10,27 @@ import Cart from "../components/Cart/Cart";
 export default function Dishes() {
   
   const dispatch = useDispatch()
-  const {dishes, dishesInCart} = useSelector(state => state.dishes)
+  const {dishes, dishesInCart, devilery, totalPrice} = useSelector(state => state.dishes)
   const [modalVisible, setModalVisible] = useState(false)
+
   useEffect(()=>{
     dispatch(fetchDishes())
   }, [dispatch])
 
+  useEffect (()=>{
+    calculateTotalPrice(dishesInCart, devilery)
+    // eslint-disable-next-line
+  }, [dishesInCart, devilery])
+
 
   const addDishInCartHandler = (dishName, dishCost) => {
     dispatch(addDishInCart(dishName, dishCost))
+  }
+  const calculateTotalPriceHandler = (dishes, devilery) => {
+    dispatch(calculateTotalPrice(dishes, devilery))
+  }
+  const deleteDishFromCartHandler = (dish) => {
+    dispatch(deleteDishFromCart(dish))
   }
 
   return (
@@ -29,13 +41,23 @@ export default function Dishes() {
           addDishInCartHandler={addDishInCartHandler}
         />
       </View> 
-      <Footer setModalVisible={setModalVisible}/>
+      <Footer 
+        setModalVisible={setModalVisible}
+        totalPrice={totalPrice}
+        dishesInCart={dishesInCart}
+        devilery={devilery}
+        calculateTotalPrice={calculateTotalPriceHandler}
+      />
       <ModalCustom
         setModalVisible={setModalVisible}
         modalVisible={modalVisible}
       >
         <Cart
           dishesInCart={dishesInCart}
+          devilery={devilery}
+          totalPrice={totalPrice}
+          calculateTotalPrice={calculateTotalPriceHandler}
+          deleteDishFromCart={deleteDishFromCartHandler}
         />
       </ModalCustom>
     </>

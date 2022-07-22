@@ -1,6 +1,6 @@
 import {  Text, View, StyleSheet, Pressable } from "react-native";
 
-export default function CartItem({name, cost, amount}) {
+export default function CartItem({name, cost, amount, deleteDishFromCart}) {
   return (
     <>
       <View style={styles.cart_item}>
@@ -11,7 +11,7 @@ export default function CartItem({name, cost, amount}) {
 
         <View style={styles.cart_item_text_wrapper}>
           <Text style={styles.cart_item_cost}>{cost} KGS</Text>
-          <Pressable style={styles.cart_item_btn}>
+          <Pressable style={styles.cart_item_btn} onPress={deleteDishFromCart}>
             <Text style={styles.cart_item_btn_text}>X</Text>
           </Pressable>
         </View>
