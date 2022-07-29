@@ -15,14 +15,18 @@ const Order = ({dishesUser, dishesData, devilery, calculateTotalPriceHandler, or
                   }
                 }
               }
-              return (
-                <OrderItem
-                  key={i}
-                  name={dish.name}
-                  cost={cost()}
-                  amount={dish.amount}
-                />
-              )
+              if (cost()) {
+                return (
+                  <OrderItem
+                    key={i}
+                    name={dish.name}
+                    cost={cost()}
+                    amount={dish.amount}
+                  />
+                )
+              } else {
+                return null
+              }
             })}
             <p className='order_list_devilery'>Devilery <b>{devilery} KGS</b></p>
           </div>
