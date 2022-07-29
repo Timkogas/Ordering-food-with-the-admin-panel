@@ -1,0 +1,21 @@
+.orders_wrapper_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.orders_wrapper_header_title {
+  font-size: 45px;
+}
+.orders_wrapper_header_btn {
+  padding: 10px 80px;
+  border: 1px solid #4ccebd;;
+  font-size: 30px;
+  font-weight: 500;
+  color: black;
+  background-color: rgb(252, 252, 252);
+  cursor: pointer;
+}
+.orders_wrapper_header_btn:hover {
+  background-color: #94ebdf;
+}
